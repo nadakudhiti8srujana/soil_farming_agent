@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>User Dashboard - Soil Farming Agent</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- Top Navbar -->
+  <header class="topbar">
+    <div class="logo">🌱 Soil Farming Agent</div>
+    <button class="logout-btn" onclick="logout()">🚪 Logout</button>
+  </header>
+
+  <div class="layout">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>User Panel</h3>
+      <ul>
+        <li onclick="showSection('soilSection')">🟤 Soil Details</li>
+        <li onclick="showSection('distributorSection')">🏪 Distributor Details</li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="content">
+
+      <!-- Soil Section -->
+      <section id="soilSection">
+        <h2>Soil Details</h2>
+        <div id="soilList" class="card-container"></div>
+      </section>
+
+      <!-- Distributor Section -->
+      <section id="distributorSection" style="display:none;">
+        <h2>Distributor Details</h2>
+        <div id="distributorList" class="card-container"></div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Load User JS -->
+  <script type="module" src="js/user.js"></script>
+
+  <!-- Sidebar Toggle Script -->
+  <script>
+    function showSection(sectionId) {
+      document.getElementById("soilSection").style.display = "none";
+      document.getElementById("distributorSection").style.display = "none";
+      document.getElementById(sectionId).style.display = "block";
+    }
+  </script>
+
+</body>
+</html>

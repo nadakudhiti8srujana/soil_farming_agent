@@ -1,0 +1,279 @@
+/* =========================
+   GLOBAL RESET
+========================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: #f4f6f8;
+  color: #333;
+}
+
+/* =========================
+   NAVBAR
+========================= */
+.topbar {
+  background: #2d6a4f;
+  color: white;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.nav-btn {
+  background: #40916c;
+  padding: 8px 16px;
+  border-radius: 6px;
+  color: white;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: 0.3s;
+}
+
+.nav-btn:hover {
+  background: #1b4332;
+}
+
+/* =========================
+   LOGIN & REGISTER FORM
+========================= */
+.form-container {
+  width: 350px;
+  margin: 100px auto;
+  background: white;
+  padding: 35px;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+}
+
+.form-container h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #2d6a4f;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  margin: 12px 0;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #2d6a4f;
+}
+
+/* Buttons */
+button {
+  padding: 10px;
+  background: #2d6a4f;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background: #1b4332;
+}
+
+/* =========================
+   HERO SECTION (INDEX)
+========================= */
+.hero {
+  text-align: center;
+  padding: 100px 20px;
+  background: linear-gradient(to right, #d8f3dc, #f1faee);
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #2d6a4f;
+}
+
+.hero p {
+  font-size: 18px;
+  color: #555;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.primary-btn {
+  background: #2d6a4f;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+.secondary-btn {
+  background: white;
+  color: #2d6a4f;
+  border: 2px solid #2d6a4f;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+}
+
+/* =========================
+   LOGOUT BUTTON
+========================= */
+.logout-btn {
+  background: white;
+  color: #2d6a4f;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  width: auto;
+  transition: 0.3s;
+}
+
+.logout-btn:hover {
+  background: #1b4332;
+  color: white;
+  transform: scale(1.05);
+}
+
+/* =========================
+   DASHBOARD LAYOUT
+========================= */
+.layout {
+  display: flex;
+}
+
+/* Sidebar */
+.sidebar {
+  width: 230px;
+  background: white;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  min-height: 100vh;
+}
+
+.sidebar h3 {
+  margin-bottom: 20px;
+  color: #2d6a4f;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar li {
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: 0.3s;
+}
+
+.sidebar li:hover {
+  background: #e9f5f1;
+}
+
+/* Content Area */
+.content {
+  flex: 1;
+  padding: 30px;
+}
+
+.content h2 {
+  margin-bottom: 20px;
+  color: #2d6a4f;
+}
+
+/* Cards */
+.card-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.card {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.card h4 {
+  color: #2d6a4f;
+  margin-bottom: 10px;
+}
+
+/* =========================
+   ADMIN PANEL
+========================= */
+.admin-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  padding: 60px;
+  flex-wrap: wrap;
+}
+
+.form-card {
+  background: white;
+  padding: 30px;
+  width: 320px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.form-card h2 {
+  margin-bottom: 20px;
+  color: #2d6a4f;
+}
+
+/* =========================
+   RESPONSIVE DESIGN
+========================= */
+@media(max-width: 768px) {
+  .layout {
+    flex-direction: column;
+  }
+
+  .sidebar {
+    width: 100%;
+    min-height: auto;
+    border-right: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .form-container {
+    width: 90%;
+  }
+
+  .admin-container {
+    padding: 20px;
+  }
+}
