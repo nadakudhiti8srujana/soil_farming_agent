@@ -1,79 +1,50 @@
-import { firebaseConfig } from './firebase-config.js';
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getAuth, signOut } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
-import { getDatabase, ref, onValue }
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-
-/* Initialize Firebase */
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const database = getDatabase(app);
-
-/* =========================
-   LOAD SOIL DATA
-========================= */
-const soilRef = ref(database, "soils");
-
-onValue(soilRef, (snapshot) => {
-  const data = snapshot.val();
-  const list = document.getElementById("soilList");
-
-  if (!list) return;
-
-  list.innerHTML = "";
-
-  if (data) {
-    for (let id in data) {
-      list.innerHTML += `
-        <div class="card">
-          <h4>${data[id].soilType}</h4>
-          <p>${data[id].characteristics}</p>
-          <p><strong>Suitable Crops:</strong> ${data[id].crops}</p>
-        </div>
-      `;
-    }
-  } else {
-    list.innerHTML = "<p>No soil data available.</p>";
-  }
-});
-
-/* =========================
-   LOAD DISTRIBUTOR DATA
-========================= */
-const distRef = ref(database, "distributors");
-
-onValue(distRef, (snapshot) => {
-  const data = snapshot.val();
-  const list = document.getElementById("distributorList");
-
-  if (!list) return;
-
-  list.innerHTML = "";
-
-  if (data) {
-    for (let id in data) {
-      list.innerHTML += `
-        <div class="card">
-          <h4>${data[id].distName}</h4>
-          <p><strong>Location:</strong> ${data[id].location}</p>
-          <p><strong>Contact:</strong> ${data[id].contact}</p>
-        </div>
-      `;
-    }
-  } else {
-    list.innerHTML = "<p>No distributor data available.</p>";
-  }
-});
-
-/* =========================
-   LOGOUT FUNCTION
-========================= */
-window.logout = function () {
-  signOut(auth)
-    .then(() => {
-      window.location.href = "login.html";
-    })
-    .catch((error) => {
-      alert("Logout failed: " + error.message);
-    });
+window.onload = function () {
+  loadSoils();
+  loadDistributors();
 };
+
+function loadSoils() {
+  const soilData = JSON.parse(localStorage.getItem("soils")) || [];
+  const container = document.getElementById("soilList");
+
+  container.innerHTML = "";
+
+  if (soilData.length === 0) {
+    container.innerHTML = "No soil data added by admin";
+    return;
+  }
+
+  soilData.forEach(soil => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <h3>${soil.soilType}</h3>
+      <p>${soil.characteristics}</p>
+      <p>${soil.crops}</p>
+      <p style="color:green;">Fertilizer: NPK</p>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function loadDistributors() {
+  const data = JSON.parse(localStorage.getItem("distributors")) || [];
+  const container = document.getElementById("distributorList");
+
+  container.innerHTML = "";
+
+  data.forEach(d => {
+    const card = document.createElement("div");
+    card.className = "card";
+
+    card.innerHTML = `
+      <h3>${d.distName}</h3>
+      <p>${d.location}</p>
+      <p>${d.contact}</p>
+    `;
+
+    container.appendChild(card);
+  });
+}

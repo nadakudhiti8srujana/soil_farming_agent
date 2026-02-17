@@ -1,20 +1,45 @@
-import { firebaseConfig } from './firebase-config.js';
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import { getDatabase, ref, push }
-from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-window.addSoil=function(){
-const soilType=document.getElementById("soilType").value;
-const characteristics=document.getElementById("characteristics").value;
-const crops=document.getElementById("crops").value;
-push(ref(database,"soils"),{soilType,characteristics,crops});
-alert("Soil Added");
+function addSoil() {
+  const soilType = document.getElementById("soilType").value;
+  const characteristics = document.getElementById("characteristics").value;
+  const crops = document.getElementById("crops").value;
+
+  if (!soilType || !characteristics || !crops) {
+    alert("Fill all fields");
+    return;
+  }
+
+  let soils = JSON.parse(localStorage.getItem("soils")) || [];
+
+  soils.push({
+    soilType: soilType,
+    characteristics: characteristics,
+    crops: crops
+  });
+
+  localStorage.setItem("soils", JSON.stringify(soils));
+
+  alert("Soil added successfully");
 }
-window.addDistributor=function(){
-const distName=document.getElementById("distName").value;
-const location=document.getElementById("location").value;
-const contact=document.getElementById("contact").value;
-push(ref(database,"distributors"),{distName,location,contact});
-alert("Distributor Added");
+
+function addDistributor() {
+  const distName = document.getElementById("distName").value;
+  const location = document.getElementById("location").value;
+  const contact = document.getElementById("contact").value;
+
+  if (!distName || !location || !contact) {
+    alert("Fill all fields");
+    return;
+  }
+
+  let distributors = JSON.parse(localStorage.getItem("distributors")) || [];
+
+  distributors.push({
+    distName: distName,
+    location: location,
+    contact: contact
+  });
+
+  localStorage.setItem("distributors", JSON.stringify(distributors));
+
+  alert("Distributor added");
 }

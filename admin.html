@@ -4,36 +4,42 @@
   <title>Admin Panel - Soil Farming Agent</title>
   <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-  <!-- Top Navbar -->
-  <header class="topbar">
-    <div class="logo">🌱 Soil Farming Agent - Admin</div>
-  </header>
+<!-- TOP BAR -->
+<header class="topbar">
+  <div class="logo">🌱 Soil Farming Agent - Admin</div>
+</header>
 
-  <div class="admin-container">
+<div class="admin-container">
 
-    <!-- Soil Form -->
-    <div class="form-card">
-      <h2>Add Soil Details</h2>
-      <input type="text" id="soilType" placeholder="Soil Type">
-      <input type="text" id="characteristics" placeholder="Characteristics">
-      <input type="text" id="crops" placeholder="Suitable Crops">
-      <button onclick="addSoil()">Add Soil</button>
-    </div>
+  <!-- SOIL FORM -->
+  <div class="form-card">
+    <h2>Add Soil Details</h2>
 
-    <!-- Distributor Form -->
-    <div class="form-card">
-      <h2>Add Distributor Details</h2>
-      <input type="text" id="distName" placeholder="Distributor Name">
-      <input type="text" id="location" placeholder="Location">
-      <input type="text" id="contact" placeholder="Contact Number">
-      <button onclick="addDistributor()">Add Distributor</button>
-    </div>
+    <input type="text" id="soilType" placeholder="Soil Type">
+    <input type="text" id="characteristics" placeholder="Characteristics">
+    <input type="text" id="crops" placeholder="Suitable Crops">
 
+    <button onclick="addSoil()">Add Soil</button>
   </div>
 
-  <script type="module" src="js/admin.js"></script>
+  <!-- DISTRIBUTOR FORM -->
+  <div class="form-card">
+    <h2>Add Distributor Details</h2>
+
+    <input type="text" id="distName" placeholder="Distributor Name">
+    <input type="text" id="location" placeholder="Location">
+    <input type="text" id="contact" placeholder="Contact Number">
+
+    <button onclick="addDistributor()">Add Distributor</button>
+  </div>
+
+</div>
+
+<!-- IMPORTANT: THIS LINE MUST BE EXACT -->
+<script src="js/admin.js"></script>
 
 </body>
 </html>
